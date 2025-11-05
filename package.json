@@ -2,10 +2,10 @@
   "name": "example-basic",
   "type": "module",
   "scripts": {
-    "dev": "node node_modules/.bin/vinxi dev --open",
-    "build": "node node_modules/.bin/vinxi build",
-    "start": "node node_modules/.bin/vinxi start",
-    "version": "node node_modules/.bin/vinxi version"
+    "dev": "vinxi dev --open",
+    "build": "vinxi build",
+    "start": "node .output/server/index.mjs",
+    "preview": "node .output/server/index.mjs"
   },
   "dependencies": {
     "@solidjs/meta": "^0.29.4",
