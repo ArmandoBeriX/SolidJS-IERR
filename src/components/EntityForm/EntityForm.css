@@ -1,0 +1,189 @@
+/* src/components/EntityForm/EntityForm.css */
+.entity-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .entity-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .entity-form .form-group label {
+    font-weight: 500;
+    color: #495057;
+    font-size: 14px;
+  }
+  
+  .entity-form .form-group input,
+  .entity-form .form-group textarea {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+  }
+  
+  .entity-form .form-group input:focus,
+  .entity-form .form-group textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  }
+  
+  .entity-form .form-group input.error,
+  .entity-form .form-group textarea.error {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.25);
+  }
+  
+  .entity-form .form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #e9ecef;
+  }
+  
+  .entity-form .delete-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 200px;
+  }
+  
+  .entity-form .form-action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-left: auto;
+  }
+  
+  /* Botones */
+  .entity-form .btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    border: none;
+  }
+  
+  .entity-form .btn-danger {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .entity-form .btn-danger:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+  }
+  
+  .entity-form .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .entity-form .btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+  }
+  
+  .entity-form .btn-primary {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .entity-form .btn-primary:hover {
+    background-color: #0069d9;
+    transform: translateY(-1px);
+  }
+  
+  .entity-form .delete-confirmation {
+    padding: 12px;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    background: rgba(220, 53, 69, 0.05);
+    animation: fadeIn 0.3s ease;
+    min-width: 200px;
+  }
+  
+  .entity-form .delete-confirmation p {
+    margin: 0 0 12px 0;
+    color: #dc3545;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .entity-form .delete-confirmation-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .entity-form .delete-confirmation-buttons .btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Modo oscuro */
+  .dark-mode .entity-form .form-group label {
+    color: #f5f5f5;
+  }
+  
+  .dark-mode .entity-form .form-group input,
+  .dark-mode .entity-form .form-group textarea {
+    background: #3d3d3d;
+    border-color: #555;
+    color: #f5f5f5;
+  }
+  
+  .dark-mode .entity-form .form-group input:focus,
+  .dark-mode .entity-form .form-group textarea:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
+  }
+  
+  .dark-mode .entity-form .form-actions {
+    border-top-color: #444;
+  }
+  
+  .dark-mode .entity-form .delete-confirmation {
+    background: rgba(220, 53, 69, 0.1);
+    border-color: #dc3545;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .entity-form .form-actions {
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .entity-form .delete-section {
+      width: 100%;
+      align-items: stretch;
+    }
+    
+    .entity-form .form-action-buttons {
+      width: 100%;
+      justify-content: flex-end;
+      margin-left: 0;
+    }
+  }
