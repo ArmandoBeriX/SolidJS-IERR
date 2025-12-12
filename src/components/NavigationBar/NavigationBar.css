@@ -1,0 +1,1660 @@
+/* src/components/NavigationBar/NavigationBar.css */
+:root {
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --border-color: #ddd;
+  --button-bg: #007bff;
+  --button-hover: #0056b3;
+  --input-bg: white;
+  --panel-bg: white;
+}
+
+.dark-mode {
+  --bg-color: #1a1a1a;
+  --text-color: #f5f5f5;
+  --border-color: #444;
+  --button-bg: #0d6efd;
+  --button-hover: #0b5ed7;
+  --input-bg: #2d2d2d;
+  --panel-bg: #2d2d2d;
+}
+
+body.dark-mode {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.navigation-container {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.navigation-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+  min-height: 60px;
+  z-index: 100;
+  position: relative;
+}
+
+.nav-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.search-input {
+  border: none;
+  padding: 8px 12px;
+  outline: none;
+  min-width: 250px;
+  background: var(--input-bg);
+  color: var(--text-color);
+}
+
+.search-input::placeholder {
+  color: #6c757d;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--button-bg);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--button-hover);
+  transform: translateY(-1px);
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  transform: translateY(-1px);
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #545b62;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.control-button {
+  padding: 8px 12px;
+  border: none;
+  background: var(--button-bg);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 4px;
+}
+
+.control-button:hover {
+  background: var(--button-hover);
+  transform: translateY(-1px);
+}
+
+.control-button.active {
+  background: #28a745;
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
+}
+
+.search-navigation {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--border-color);
+}
+
+.nav-arrow {
+  padding: 4px 8px;
+  border: none;
+  background: #6c757d;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-arrow:hover {
+  background: #545b62;
+}
+
+.map-controls {
+  margin-left: auto;
+}
+
+.utility-controls {
+  border-left: 1px solid var(--border-color);
+  padding-left: 15px;
+}
+
+/* Estilos para los iconos de Bootstrap */
+.bi {
+  font-size: 1rem;
+}
+
+.btn .bi, .control-button .bi {
+  font-size: 1.1rem;
+}
+
+.nav-arrow .bi {
+  font-size: 0.8rem;
+}
+
+/* Panel de detalles */
+.details-panel {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 15px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+  z-index: 90;
+  position: relative;
+}
+
+.details-panel h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.details-panel p {
+  margin: 0 0 10px 0;
+  color: var(--text-color);
+}
+
+.stats {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #e9ecef;
+  border-radius: 4px;
+}
+
+.stat .bi {
+  color: #007bff;
+}
+
+.dark-mode .stat {
+  background: #444;
+}
+
+/* =========================================== */
+/* ÁREA DEL DIAGRAMA - COMPLETAMENTE REDISEÑADA */
+/* =========================================== */
+
+.joint-container {
+  flex: 1;
+  width: 100%;
+  background: var(--bg-color);
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+  height: calc(100vh - 60px);
+}
+
+/* Cuando el panel de detalles está visible */
+.navigation-container:has(.details-panel) .joint-container {
+  height: calc(100vh - 60px - 140px);
+}
+
+.joint-paper {
+  width: 100% !important;
+  height: 100% !important;
+  background: var(--bg-color);
+  border: none !important;
+}
+
+/* NUEVOS ESTILOS PARA CAMPOS CLICKEABLES */
+.joint-type-er-entity text[selector^="fieldText"] {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.joint-type-er-entity text[selector^="fieldText"]:hover {
+  fill: #0d6efd !important;
+  text-decoration: underline;
+}
+
+/* Indicador visual de que el campo es editable */
+.joint-type-er-entity text[selector^="fieldText"]::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.joint-type-er-entity text[selector^="fieldText"]:hover::after {
+  background: #0d6efd;
+}
+
+/* Mejorar la legibilidad del texto en modo oscuro */
+.dark-mode .joint-type-er-entity text[selector^="fieldText"]:hover {
+  fill: #4dabf7 !important;
+}
+
+/* Estilos para elementos JointJS - ENTIDADES PERSONALIZADAS */
+.joint-type-er-entity rect.body {
+  fill: var(--panel-bg);
+  stroke: #0d6efd;
+  stroke-width: 2;
+  rx: 8;
+  ry: 8;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+}
+
+.joint-type-er-entity rect.header {
+  fill: #0d6efd;
+  stroke: #0d6efd;
+  stroke-width: 0;
+  rx: 8;
+  ry: 8;
+}
+
+.joint-type-er-entity text.headerText {
+  fill: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-anchor: middle;
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.joint-type-er-entity text.identifierText {
+  fill: rgba(255, 255, 255, 0.9);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+/* Campos de la entidad - Réplica exacta del diseño anterior */
+.joint-type-er-entity rect.fieldBackground {
+  fill: transparent;
+  stroke: none;
+}
+
+.joint-type-er-entity text.fieldText {
+  fill: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  text-anchor: start;
+  pointer-events: none;
+}
+
+.joint-type-er-entity text.fieldFormat {
+  fill: #6c757d;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 11px;
+  text-anchor: end;
+  pointer-events: none;
+}
+
+/* Líneas separadoras entre campos */
+.joint-type-er-entity line.fieldSeparator {
+  stroke: #e9ecef;
+  stroke-width: 1;
+}
+
+/* Estilos para campos especiales */
+.joint-type-er-entity rect.pkField {
+  fill: rgba(220, 53, 69, 0.1);
+  stroke: none;
+}
+
+.joint-type-er-entity line.pkSeparator {
+  stroke: #dc3545;
+  stroke-width: 4;
+}
+
+.joint-type-er-entity rect.relationField {
+  fill: rgba(255, 193, 7, 0.15);
+  stroke: none;
+}
+
+.joint-type-er-entity line.relationSeparator {
+  stroke: #ffc107;
+  stroke-width: 4;
+}
+
+/* Iconos para campos especiales */
+.joint-type-er-entity text.pkIcon {
+  fill: #dc3545;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 10px;
+}
+
+.joint-type-er-entity text.relationIcon {
+  fill: #ffc107;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 10px;
+}
+
+/* Footer de la entidad */
+.joint-type-er-entity rect.footer {
+  fill: #e9ecef;
+  stroke: none;
+  rx: 0;
+  ry: 0;
+}
+
+.joint-type-er-entity text.footerText {
+  fill: #6c757d;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 11px;
+  text-anchor: start;
+  pointer-events: none;
+}
+
+/* Estados de hover y selección */
+.joint-type-er-entity:hover rect.body {
+  stroke-width: 3;
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.2));
+}
+
+.joint-element.joint-theme-default.joint-element-selected rect.body {
+  stroke: #0d6efd !important;
+  stroke-width: 3 !important;
+  filter: drop-shadow(0 0 0 3px #0d6efd);
+}
+
+/* Modo oscuro para entidades */
+.dark-mode .joint-type-er-entity rect.body {
+  fill: var(--panel-bg);
+  stroke: #0d6efd;
+}
+
+.dark-mode .joint-type-er-entity rect.header {
+  fill: #0d6efd;
+  stroke: #0d6efd;
+}
+
+.dark-mode .joint-type-er-entity text.fieldText {
+  fill: var(--text-color);
+}
+
+.dark-mode .joint-type-er-entity rect.footer {
+  fill: #444;
+}
+
+.dark-mode .joint-type-er-entity text.footerText {
+  fill: #adb5bd;
+}
+
+/* Estilos para entidades en resultados de búsqueda */
+.joint-type-er-entity.search-result rect.body {
+  stroke: #ffc107;
+  stroke-width: 3;
+  filter: drop-shadow(0 4px 20px rgba(255, 193, 7, 0.4));
+}
+
+.joint-type-er-entity.search-result rect.header {
+  fill: #ffc107;
+}
+
+/* Descripción de la entidad */
+.joint-type-er-entity rect.description {
+  fill: rgba(13, 110, 253, 0.1);
+  stroke: none;
+}
+
+.joint-type-er-entity text.descriptionText {
+  fill: #495057;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  text-anchor: start;
+  pointer-events: none;
+}
+
+.dark-mode .joint-type-er-entity text.descriptionText {
+  fill: #adb5bd;
+}
+
+.dark-mode .joint-type-er-entity rect.description {
+  fill: rgba(13, 110, 253, 0.1);
+}
+
+/* Estilos para las conexiones */
+.joint-link .connection {
+  stroke: var(--button-bg);
+  stroke-width: 2;
+  fill: none;
+}
+
+.joint-link .connection-wrap {
+  stroke: transparent;
+  stroke-width: 10;
+  fill: none;
+  cursor: pointer;
+}
+
+.joint-link .marker-source,
+.joint-link .marker-target {
+  fill: var(--button-bg);
+  stroke: var(--button-bg);
+}
+
+.joint-link .marker-vertices {
+  fill: var(--button-bg);
+  stroke: var(--button-bg);
+  r: 4;
+}
+
+.joint-link .marker-arrowheads {
+  fill: var(--button-bg);
+  stroke: var(--button-bg);
+}
+
+.joint-link .link-tools .tool-remove {
+  fill: #dc3545;
+  stroke: #dc3545;
+}
+
+.joint-link .link-tools .tool-remove:hover {
+  fill: #c82333;
+  stroke: #c82333;
+}
+
+/* Estilos para las etiquetas de las conexiones */
+.joint-link .labels text {
+  fill: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.joint-link .labels rect {
+  fill: var(--panel-bg);
+  stroke: var(--button-bg);
+  stroke-width: 1;
+  rx: 3;
+  ry: 3;
+  opacity: 0.9;
+}
+
+/* Estilos para elementos estándar de JointJS */
+.joint-type-standard-rectangle rect.body {
+  fill: var(--panel-bg);
+  stroke: var(--button-bg);
+  stroke-width: 2;
+  rx: 5;
+  ry: 5;
+}
+
+.joint-type-standard-rectangle text {
+  fill: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+/* Estilos para herramientas de enlaces */
+.joint-link-tools .tool-remove {
+  fill: #dc3545;
+  stroke: #dc3545;
+}
+
+.joint-link-tools .tool-remove:hover {
+  fill: #c82333;
+  stroke: #c82333;
+}
+
+.joint-link-tools .tool-options {
+  fill: #ffc107;
+  stroke: #ffc107;
+}
+
+.joint-link-tools .tool-options:hover {
+  fill: #e0a800;
+  stroke: #e0a800;
+}
+
+/* Modo oscuro para elementos JointJS */
+.dark-mode .joint-type-er-entity rect.body {
+  fill: var(--panel-bg);
+  stroke: var(--button-bg);
+}
+
+.dark-mode .joint-type-er-entity rect.header {
+  fill: var(--button-bg);
+  stroke: var(--button-bg);
+}
+
+.dark-mode .joint-type-er-entity text.headerText {
+  fill: #f5f5f5;
+}
+
+.dark-mode .joint-type-er-entity text[selector^="field"] {
+  fill: var(--text-color);
+}
+
+.dark-mode .joint-link .connection {
+  stroke: var(--button-bg);
+}
+
+.dark-mode .joint-link .labels text {
+  fill: var(--text-color);
+}
+
+.dark-mode .joint-link .labels rect {
+  fill: var(--panel-bg);
+  stroke: var(--button-bg);
+}
+
+.dark-mode .joint-type-standard-rectangle rect.body {
+  fill: var(--panel-bg);
+  stroke: var(--button-bg);
+}
+
+.dark-mode .joint-type-standard-rectangle text {
+  fill: var(--text-color);
+}
+
+/* Indicador de nivel de zoom */
+.zoom-level-display {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-color);
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #6c757d;
+  text-align: center;
+  padding: 2rem;
+}
+
+.empty-state .bi {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  margin-bottom: 0.5rem;
+  color: #495057;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  background: var(--panel-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-title {
+  margin: 0;
+  color: var(--text-color);
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+  gap: 10px;
+}
+
+.delete-confirmation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Indicador de resultados de búsqueda */
+.search-results-indicator {
+  margin-left: 10px;
+  padding: 4px 8px;
+  background: #ffc107;
+  color: #212529;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.search-results-text {
+  white-space: nowrap;
+}
+
+/* Estilo para estadística de búsqueda */
+.search-stat {
+  background: rgba(255, 193, 7, 0.15) !important;
+  border-left: 3px solid #ffc107;
+}
+
+/* Modo oscuro para indicador de búsqueda */
+.dark-mode .search-results-indicator {
+  background: #ffc107;
+  color: #1a1a1a;
+}
+
+.dark-mode .search-stat {
+  background: rgba(255, 193, 7, 0.1) !important;
+}
+
+/* Indicador de modo actual */
+.mode-stat.select {
+  background: rgba(108, 117, 125, 0.15) !important;
+  border-left: 3px solid #6c757d;
+}
+
+.mode-stat.tables {
+  background: rgba(13, 110, 253, 0.15) !important;
+  border-left: 3px solid #0d6efd;
+}
+
+/* Efectos de hover para elementos del diagrama */
+.joint-type-er-entity:hover rect.body {
+  stroke-width: 3;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+}
+
+.joint-link:hover .connection {
+  stroke-width: 3;
+}
+
+/* Selección de elementos */
+.joint-element.joint-theme-default.joint-element-selected rect.body {
+  stroke: #28a745 !important;
+  stroke-width: 3 !important;
+  filter: drop-shadow(0 0 10px rgba(40, 167, 69, 0.3));
+}
+
+.joint-link.joint-theme-default.joint-link-selected .connection {
+  stroke: #28a745 !important;
+  stroke-width: 3 !important;
+}
+
+/* Animaciones suaves */
+.joint-type-er-entity,
+.joint-link {
+  transition: all 0.2s ease;
+}
+
+/* Estilos para el papel de JointJS cuando está en modo interacción */
+.joint-paper.joint-theme-default {
+  cursor: grab;
+}
+
+.joint-paper.joint-theme-default:active {
+  cursor: grabbing;
+}
+
+.joint-paper.joint-theme-default .joint-element {
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navigation-bar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .search-input {
+    min-width: 150px;
+  }
+  
+  .map-controls {
+    margin-left: 0;
+  }
+  
+  .nav-section {
+    flex: 1 1 auto;
+    min-width: 120px;
+  }
+  
+  .search-section {
+    order: 3;
+    flex: 2 1 200px;
+  }
+  
+  .map-controls {
+    order: 4;
+  }
+  
+  .utility-controls {
+    order: 5;
+  }
+  
+  .stats {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .zoom-level-display {
+    bottom: 10px;
+    left: 10px;
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+
+  /* Ajustes para elementos JointJS en móviles */
+  .joint-type-er-entity text.headerText {
+    font-size: 14px;
+  }
+
+  .joint-type-er-entity text.identifierText {
+    font-size: 10px;
+  }
+
+  .joint-type-er-entity text.fieldText {
+    font-size: 11px;
+  }
+
+  .joint-type-er-entity text.fieldFormat {
+    font-size: 9px;
+  }
+
+  .joint-link .labels text {
+    font-size: 10px;
+  }
+
+  /* Ajustes de altura para móviles */
+  .joint-container {
+    height: calc(100vh - 80px);
+  }
+
+  .navigation-container:has(.details-panel) .joint-container {
+    height: calc(100vh - 80px - 160px);
+  }
+}
+
+/* Estilos para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .navigation-bar {
+    padding: 5px;
+    gap: 5px;
+  }
+
+  .nav-section {
+    gap: 5px;
+  }
+
+  .btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .control-button {
+    padding: 6px 8px;
+  }
+
+  .search-input {
+    min-width: 120px;
+    padding: 6px 8px;
+  }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .joint-type-er-entity,
+  .joint-link,
+  .btn,
+  .control-button {
+    transition: none;
+  }
+}
+
+/* Alto contraste para mejor accesibilidad */
+@media (prefers-contrast: high) {
+  .joint-type-er-entity rect.body {
+    stroke-width: 3;
+  }
+
+  .joint-link .connection {
+    stroke-width: 3;
+  }
+
+  .joint-type-er-entity text.headerText {
+    text-shadow: 0 0 2px black;
+  }
+}
+
+/* Impresión */
+@media print {
+  .navigation-bar,
+  .details-panel,
+  .zoom-level-display {
+    display: none;
+  }
+
+  .joint-container {
+    height: 100vh;
+  }
+
+  .joint-paper {
+    background: white !important;
+  }
+
+  .joint-type-er-entity rect.body {
+    fill: white !important;
+    stroke: black !important;
+  }
+
+  .joint-type-er-entity rect.header {
+    fill: black !important;
+    stroke: black !important;
+  }
+
+  .joint-type-er-entity text.headerText {
+    fill: white !important;
+  }
+
+  .joint-type-er-entity text.identifierText {
+    fill: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .joint-type-er-entity text.fieldText {
+    fill: black !important;
+  }
+
+  .joint-link .connection {
+    stroke: black !important;
+  }
+
+  .joint-link .labels text {
+    fill: black !important;
+  }
+}
+
+/* Estilos para el modo de conexión */
+.connecting-mode .joint-paper {
+  cursor: crosshair;
+}
+
+/* Estilos para handles en elementos JointJS */
+.joint-type-er-entity circle[selector^="leftHandle"] {
+  fill: #dc3545;
+  stroke: white;
+  stroke-width: 2;
+  r: 4;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.joint-type-er-entity circle[selector^="rightHandle"] {
+  fill: #ffc107;
+  stroke: white;
+  stroke-width: 2;
+  r: 4;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.joint-type-er-entity circle[selector^="leftHandle"]:hover,
+.joint-type-er-entity circle[selector^="rightHandle"]:hover {
+  r: 5;
+  stroke-width: 3;
+}
+
+.dark-mode .joint-type-er-entity circle[selector^="leftHandle"] {
+  fill: #dc3545;
+  stroke: #2d2d2d;
+}
+
+.dark-mode .joint-type-er-entity circle[selector^="rightHandle"] {
+  fill: #ffc107;
+  stroke: #2d2d2d;
+}
+
+/* Estilos para conexiones campo-a-campo */
+.joint-link .connection[stroke-dasharray="5,2"] {
+  stroke-dasharray: 5, 2;
+}
+
+.joint-link .connection {
+  stroke: #0d6efd;
+}
+
+/* Estilos para la conexión temporal */
+.temp-connection {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.connection-hint {
+  background: rgba(13, 110, 253, 0.1);
+  border: 1px solid #0d6efd;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #0d6efd;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.connection-hint-text {
+  margin-left: 10px;
+  color: #0d6efd;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.connecting-stat {
+  background: rgba(13, 110, 253, 0.15) !important;
+  border-left: 3px solid #0d6efd;
+}
+
+/* Estilos para el botón agregar campo en JointJS */
+.joint-type-er-entity rect.addFieldSection {
+  transition: all 0.2s ease;
+}
+
+.joint-type-er-entity rect.addFieldButton {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.joint-type-er-entity rect.addFieldClickArea {
+  cursor: pointer;
+}
+
+.joint-type-er-entity:hover rect.addFieldSection {
+  fill: #e9ecef;
+}
+
+.dark-mode .joint-type-er-entity:hover rect.addFieldSection {
+  fill: #444;
+}
+
+.joint-type-er-entity:hover rect.addFieldButton {
+  stroke: #0d6efd;
+  fill: rgba(13, 110, 253, 0.05);
+}
+
+.joint-type-er-entity:hover text.addFieldButtonText,
+.joint-type-er-entity:hover text.addFieldButtonIcon {
+  fill: #0d6efd;
+}
+
+.joint-type-er-entity rect.addFieldButton:hover {
+  stroke: #0b5ed7;
+  fill: rgba(13, 110, 253, 0.1);
+  stroke-dasharray: none;
+}
+
+.joint-type-er-entity text.addFieldButtonText:hover,
+.joint-type-er-entity text.addFieldButtonIcon:hover {
+  fill: #0b5ed7;
+}
+
+/* Estilos para nombres de campo clickeables */
+.joint-type-er-entity text[selector^="fieldText"] {
+  cursor: pointer;
+  transition: fill 0.2s ease;
+}
+
+.joint-type-er-entity text[selector^="fieldText"]:hover {
+  fill: #0d6efd !important;
+}
+
+/* Estilos para header clickeable */
+.joint-type-er-entity rect.header {
+  cursor: pointer;
+  transition: fill 0.2s ease;
+}
+
+.joint-type-er-entity rect.header:hover {
+  fill: #0b5ed7;
+}
+
+/* Estados de carga del diagrama */
+.diagram-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #6c757d;
+  z-index: 10;
+}
+
+.diagram-loading i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.empty-diagram-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  text-align: center;
+  color: #6c757d;
+}
+
+.empty-diagram-state i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+/* Mejorar la visibilidad del diagrama cuando ocupa más espacio */
+.joint-type-er-entity text.headerText {
+  font-size: 18px;
+}
+
+.joint-type-er-entity text.fieldText {
+  font-size: 14px;
+}
+
+.joint-type-er-entity text.fieldFormat {
+  font-size: 12px;
+}
+
+/* Ajustar el tamaño de las entidades para aprovechar el espacio */
+.joint-type-er-entity rect.body {
+  min-width: 350px;
+}
+
+/* Mejorar la navegación en el diagrama más grande */
+.joint-paper.joint-theme-default {
+  background-size: 20px 20px;
+  background-image: 
+    linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+}
+
+.dark-mode .joint-paper.joint-theme-default {
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+}
+
+/* Mejorar el zoom para el área más grande */
+.zoom-level-display {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.dark-mode .zoom-level-display {
+  background: rgba(45, 45, 45, 0.9);
+}
+
+/* Asegurar que los elementos sean más visibles en el área expandida */
+.joint-link .connection {
+  stroke-width: 3;
+}
+
+.joint-type-er-entity rect.body {
+  stroke-width: 3;
+}
+
+/* Mejorar la interacción en pantallas grandes */
+@media (min-width: 1200px) {
+  .joint-type-er-entity text.headerText {
+    font-size: 20px;
+  }
+  
+  .joint-type-er-entity text.fieldText {
+    font-size: 15px;
+  }
+  
+  .joint-type-er-entity rect.body {
+    min-width: 400px;
+  }
+}
+
+/* =========================================== */
+/* NUEVOS ESTILOS PARA DIAGRAMA MÁS GRANDE */
+/* =========================================== */
+
+/* Asegurar que el diagrama ocupe todo el espacio disponible */
+.joint-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+.joint-paper {
+  width: 100%;
+  height: 100%;
+}
+
+/* Asegurar que el SVG ocupe todo el espacio */
+.joint-paper svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Mejorar el grid para el espacio expandido */
+.joint-paper .grid {
+  opacity: 0.1;
+}
+
+/* Asegurar que los elementos sean accesibles en el espacio grande */
+.joint-element {
+  cursor: pointer;
+}
+
+/* Mejorar la selección de elementos */
+.joint-element.joint-theme-default.joint-element-selected {
+  filter: drop-shadow(0 0 8px rgba(13, 110, 253, 0.4));
+}
+
+/* Ajustar el z-index para superposición correcta */
+.navigation-bar {
+  z-index: 1000;
+}
+
+.details-panel {
+  z-index: 999;
+}
+
+.joint-container {
+  z-index: 1;
+}
+
+/* ESTILOS MEJORADOS PARA DETECCIÓN DE CLICKS EN CAMPOS */
+.joint-type-er-entity rect.field-click-area {
+  cursor: pointer !important;
+  pointer-events: all !important;
+  fill: transparent !important;
+  stroke: none !important;
+}
+
+.joint-type-er-entity rect.field-click-area:hover {
+  fill: rgba(13, 110, 253, 0.1) !important;
+}
+
+.joint-type-er-entity text.clickable-field-name {
+  cursor: pointer !important;
+  pointer-events: none !important; /* El texto no captura eventos, el rect sí */
+  transition: all 0.2s ease;
+}
+
+.joint-type-er-entity text.clickable-field-name:hover {
+  fill: #0d6efd !important;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  filter: drop-shadow(0 1px 1px rgba(13, 110, 253, 0.3));
+}
+
+/* Feedback visual cuando el área clickeable está activa */
+.joint-type-er-entity rect.field-click-area:active {
+  fill: rgba(13, 110, 253, 0.2) !important;
+}
+
+/* Modo oscuro para áreas clickeables */
+.dark-mode .joint-type-er-entity rect.field-click-area:hover {
+  fill: rgba(77, 171, 247, 0.1) !important;
+}
+
+.dark-mode .joint-type-er-entity text.clickable-field-name:hover {
+  fill: #4dabf7 !important;
+}
+
+/* Estilos específicos para diferentes tipos de campos */
+.joint-type-er-entity rect.field-click-area.primary-key:hover {
+  fill: rgba(220, 53, 69, 0.1) !important;
+}
+
+.joint-type-er-entity text.clickable-field-name.primary-key:hover {
+  fill: #dc3545 !important;
+}
+
+.joint-type-er-entity rect.field-click-area.relation-field:hover {
+  fill: rgba(255, 193, 7, 0.1) !important;
+}
+
+.joint-type-er-entity text.clickable-field-name.relation-field:hover {
+  fill: #ffc107 !important;
+}
+
+/* ESTILOS MEJORADOS PARA CAMPOS CLICKEABLES - SIN INTERFERENCIAS */
+.joint-type-er-entity text.clickable-field-name {
+  cursor: pointer !important;
+  transition: all 0.2s ease;
+  pointer-events: all !important;
+}
+
+.joint-type-er-entity text.clickable-field-name:hover {
+  fill: #0d6efd !important;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  filter: drop-shadow(0 1px 1px rgba(13, 110, 253, 0.3));
+}
+
+/* Prevenir que el arrastre interfiera con los clicks */
+.joint-paper .joint-type-er-entity text.clickable-field-name {
+  pointer-events: all !important;
+  user-select: none;
+}
+
+/* Áreas clickeables invisibles */
+.joint-type-er-entity rect.field-click-area {
+  cursor: pointer !important;
+  pointer-events: all !important;
+}
+
+/* Feedback visual cuando se presiona */
+.joint-type-er-entity text.clickable-field-name:active {
+  fill: #0b5ed7 !important;
+  transform: scale(0.98);
+}
+
+/* Efecto de pulso sutil al hacer hover - SIN INTERFERIR CON CLIC */
+@keyframes fieldNamePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.joint-type-er-entity text.clickable-field-name:hover {
+  animation: fieldNamePulse 0.3s ease;
+}
+
+/* Deshabilitar animaciones que puedan interferir con el clic */
+.joint-type-er-entity text.clickable-field-name {
+  transform-origin: center;
+}
+
+/* Asegurar que el área clickeable cubra bien el texto */
+.joint-type-er-entity rect[selector^="fieldClickArea"] {
+  fill: transparent;
+  stroke: none;
+  cursor: pointer;
+}
+
+/* Indicador visual muy claro de que es clickeable */
+.joint-type-er-entity text.clickable-field-name::after {
+  content: "✏️";
+  opacity: 0;
+  font-size: 8px;
+  margin-left: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.joint-type-er-entity text.clickable-field-name:hover::after {
+  opacity: 1;
+}
+
+/* Estilos específicos para diferentes tipos de campos */
+.joint-type-er-entity text.clickable-field-name.primary-key:hover {
+  fill: #dc3545 !important;
+  text-decoration-color: #dc3545;
+}
+
+.joint-type-er-entity text.clickable-field-name.relation-field:hover {
+  fill: #ffc107 !important;
+  text-decoration-color: #ffc107;
+}
+
+/* Modo oscuro para campos clickeables */
+.dark-mode .joint-type-er-entity text.clickable-field-name:hover {
+  fill: #4dabf7 !important;
+  text-decoration-color: #4dabf7;
+}
+
+/* Mejorar la legibilidad en diferentes fondos */
+.joint-type-er-entity text.clickable-field-name {
+  paint-order: stroke;
+  stroke: var(--panel-bg);
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Estilos para el estado de hover mejorado */
+.joint-type-er-entity text.clickable-field-name:hover {
+  stroke: rgba(13, 110, 253, 0.1);
+  stroke-width: 4px;
+}
+
+/* Efecto de transición suave para todos los cambios */
+.joint-type-er-entity text {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Resaltado para campos cuando están siendo editados */
+.joint-type-er-entity text.clickable-field-name.editing {
+  fill: #28a745 !important;
+  font-weight: bold;
+  text-decoration: underline wavy #28a745;
+}
+
+/* Indicador visual para campos requeridos */
+.joint-type-er-entity text.clickable-field-name.required::after {
+  content: '*';
+  color: #dc3545;
+  margin-left: 2px;
+}
+
+/* Mejorar la visibilidad del texto en diferentes situaciones */
+.joint-type-er-entity text.clickable-field-name {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* MEJORAS PARA DETECCIÓN VISUAL DE CAMPOS CLICKEABLES */
+.joint-type-er-entity text[selector^="fieldText"] {
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  pointer-events: all !important;
+}
+
+.joint-type-er-entity text[selector^="fieldText"]:hover {
+  fill: #0d6efd !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 2px !important;
+  filter: drop-shadow(0 1px 1px rgba(13, 110, 253, 0.3)) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Feedback visual cuando se presiona */
+.joint-type-er-entity text[selector^="fieldText"]:active {
+  fill: #0b5ed7 !important;
+  transform: translateY(0px) scale(0.98) !important;
+}
+
+/* Prevenir que el texto se "eleve" demasiado */
+.joint-type-er-entity text[selector^="fieldText"] {
+  transform-origin: center !important;
+}
+
+/* Estilos específicos para diferentes tipos de campos */
+.joint-type-er-entity text[selector^="fieldText"].primary-key:hover {
+  fill: #dc3545 !important;
+  text-decoration-color: #dc3545 !important;
+}
+
+.joint-type-er-entity text[selector^="fieldText"].relation-field:hover {
+  fill: #ffc107 !important;
+  text-decoration-color: #ffc107 !important;
+}
+
+/* Indicador visual de campo encontrado */
+.field-detected {
+  animation: fieldPulse 0.5s ease-in-out;
+}
+
+@keyframes fieldPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+/* Agregar al final de NavigationBar.css */
+
+/* Estilos para debug de detección de campos */
+.field-detected {
+  animation: fieldPulse 0.5s ease-in-out;
+}
+
+@keyframes fieldPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Resaltado visual para campos cuando son detectados */
+.joint-type-er-entity text[data-field-id].detected {
+  fill: #28a745 !important;
+  font-weight: bold !important;
+  text-decoration: underline wavy #28a745 !important;
+  animation: detectedFieldPulse 0.5s ease-in-out 2;
+}
+
+@keyframes detectedFieldPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Indicador visual para campos cuando están siendo editados */
+.joint-type-er-entity text.clickable-field-name.editing {
+  fill: #28a745 !important;
+  font-weight: bold;
+  text-decoration: underline wavy #28a745;
+}
+
+/* Mejorar la visibilidad de los data attributes en modo debug */
+.joint-type-er-entity text[data-field-id]::before {
+  content: attr(data-field-id);
+  position: absolute;
+  top: -10px;
+  left: 0;
+  font-size: 8px;
+  color: #6c757d;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.joint-type-er-entity text[data-field-id]:hover::before {
+  opacity: 0.7;
+}
+/* Agregar al final de NavigationBar.css */
+
+/* Estilos mejorados para el botón agregar campo en JointJS */
+.joint-type-er-entity rect.addFieldClickArea {
+  cursor: pointer !important;
+  fill: transparent !important;
+  stroke: none !important;
+}
+
+.joint-type-er-entity rect.addFieldClickArea:hover {
+  fill: rgba(13, 110, 253, 0.1) !important;
+}
+
+.joint-type-er-entity rect.addFieldButton {
+  transition: all 0.3s ease;
+}
+
+.joint-type-er-entity text.addFieldButtonText,
+.joint-type-er-entity text.addFieldButtonIcon {
+  transition: all 0.3s ease;
+}
+
+.joint-type-er-entity:hover rect.addFieldButton {
+  stroke: #0d6efd !important;
+  stroke-dasharray: none !important;
+}
+
+.joint-type-er-entity:hover text.addFieldButtonText,
+.joint-type-er-entity:hover text.addFieldButtonIcon {
+  fill: #0d6efd !important;
+}
+
+/* Feedback visual cuando se presiona el botón */
+.joint-type-er-entity rect.addFieldClickArea:active {
+  fill: rgba(13, 110, 253, 0.2) !important;
+}
+
+.joint-type-er-entity rect.addFieldButton:active {
+  stroke: #0b5ed7 !important;
+  fill: rgba(13, 110, 253, 0.15) !important;
+}
+
+/* Modo oscuro para botón agregar campo */
+.dark-mode .joint-type-er-entity rect.addFieldClickArea:hover {
+  fill: rgba(77, 171, 247, 0.1) !important;
+}
+
+.dark-mode .joint-type-er-entity:hover rect.addFieldButton {
+  stroke: #4dabf7 !important;
+}
+
+.dark-mode .joint-type-er-entity:hover text.addFieldButtonText,
+.dark-mode .joint-type-er-entity:hover text.addFieldButtonIcon {
+  fill: #4dabf7 !important;
+}
+
+/* Indicador visual para mostrar que es clickeable */
+.joint-type-er-entity text.addFieldButtonIcon {
+  font-weight: bold;
+}
+
+/* Animación sutil al hacer hover */
+@keyframes addFieldPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.joint-type-er-entity rect.addFieldClickArea:hover {
+  animation: addFieldPulse 0.3s ease;
+}
