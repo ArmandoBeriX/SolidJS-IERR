@@ -1,0 +1,533 @@
+/* src/components/EntityRelationshipDiagram/EntityNode.css */
+.entity-node {
+  position: absolute;
+  background: white;
+  border: 2px solid #0d6efd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  width: 320px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: grab;
+  user-select: none;
+  transform-origin: center center;
+}
+
+.entity-node:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+}
+
+.entity-node:active {
+  cursor: grabbing;
+}
+
+.entity-node.dragging {
+  cursor: grabbing !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  transform: rotate(2deg) scale(1.02);
+  z-index: 1000 !important;
+  transition: none;
+}
+
+.entity-node.selected {
+  border-color: #28a745;
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25), 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.entity-node.highlighted {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25), 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.entity-node.search-result {
+  border-color: #ffc107;
+  box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.25), 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Header styles */
+.entity-header {
+  background: #0d6efd;
+  color: white;
+  padding: 12px 16px;
+  font-weight: bold;
+  font-size: 16px;
+  border-bottom: 2px solid #0b5ed7;
+  cursor: grab;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.entity-header:hover {
+  background: #0b5ed7;
+}
+
+.entity-node.dragging .entity-header {
+  cursor: grabbing;
+}
+
+.entity-header .identifier {
+  font-size: 12px;
+  opacity: 0.9;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Description styles */
+.entity-description {
+  padding: 8px 16px;
+  background: rgba(13, 110, 253, 0.1);
+  border-bottom: 1px solid #ddd;
+  font-size: 12px;
+  color: #495057;
+}
+
+/* Fields container */
+.entity-fields {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.entity-fields::-webkit-scrollbar {
+  width: 6px;
+}
+
+.entity-fields::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.entity-fields::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.entity-fields::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Field item styles */
+.field-item {
+  padding: 8px 16px;
+  border-bottom: 1px solid #e9ecef;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.field-item:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.field-item:last-child {
+  border-bottom: none;
+}
+
+.field-item.primary-key {
+  background: rgba(220, 53, 69, 0.1);
+  border-left: 4px solid #dc3545;
+}
+
+.field-item.relation {
+  background: rgba(255, 193, 7, 0.15);
+  border-left: 4px solid #ffc107;
+}
+
+.field-icon {
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.field-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.field-name {
+  font-weight: normal;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.field-name.clickable {
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin: -6px -8px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.field-name.clickable:hover {
+  background: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+  border-color: rgba(13, 110, 253, 0.2);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.field-name.clickable:active {
+  background: rgba(13, 110, 253, 0.2);
+  transform: translateY(1px);
+}
+
+/* Indicador visual de que es clickeable */
+.field-name.clickable::after {
+  content: "✏️";
+  opacity: 0;
+  margin-left: 4px;
+  font-size: 10px;
+  transition: opacity 0.2s ease;
+}
+
+.field-item:hover .field-name.clickable::after {
+  opacity: 0.7;
+}
+
+.field-name.clickable:hover::after {
+  opacity: 1;
+}
+
+.field-name.primary-key {
+  font-weight: bold;
+  color: #dc3545;
+}
+
+.field-name.relation {
+  font-weight: bold;
+  color: #ffc107;
+}
+
+.field-format {
+  font-size: 11px;
+  text-align: right;
+  min-width: 80px;
+  font-weight: normal;
+}
+
+.field-format.primary-key {
+  font-weight: bold;
+  color: #dc3545;
+}
+
+.field-format.relation {
+  font-weight: bold;
+  color: #ffc107;
+}
+
+/* BOTÓN AGREGAR CAMPO - ESTILOS COMPLETOS */
+.add-field-section {
+  padding: 12px 16px;
+  border-top: 1px solid #e9ecef;
+  background: #f8f9fa;
+  transition: all 0.2s ease;
+}
+
+.add-field-button {
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  border: 2px dashed #6c757d;
+  border-radius: 6px;
+  color: #6c757d;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.add-field-button:hover {
+  background: #e9ecef;
+  border-color: #0d6efd;
+  color: #0d6efd;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.add-field-button:active {
+  transform: translateY(0);
+}
+
+.entity-node:hover .add-field-section {
+  background: #e9ecef;
+}
+
+/* Footer styles */
+.entity-footer {
+  padding: 8px 16px;
+  background: #e9ecef;
+  border-top: 1px solid #dee2e6;
+  font-size: 11px;
+  color: #6c757d;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Drag indicator */
+.drag-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+/* Dark mode styles */
+.dark-mode .entity-node {
+  background: #2d2d2d;
+  border-color: #0d6efd;
+}
+
+.dark-mode .entity-header {
+  background: #0d6efd;
+  border-bottom-color: #0a58ca;
+}
+
+.dark-mode .entity-description {
+  background: rgba(13, 110, 253, 0.15);
+  color: #adb5bd;
+  border-bottom-color: #444;
+}
+
+.dark-mode .field-item {
+  border-bottom-color: #444;
+}
+
+.dark-mode .field-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .field-item.primary-key {
+  background: rgba(220, 53, 69, 0.15);
+}
+
+.dark-mode .field-item.relation {
+  background: rgba(255, 193, 7, 0.1);
+}
+
+/* Dark mode para botón agregar campo */
+.dark-mode .add-field-section {
+  background: #3d3d3d;
+  border-top-color: #444;
+}
+
+.dark-mode .add-field-button {
+  border-color: #6c757d;
+  color: #adb5bd;
+}
+
+.dark-mode .add-field-button:hover {
+  background: #444;
+  border-color: #0d6efd;
+  color: #0d6efd;
+}
+
+.dark-mode .entity-node:hover .add-field-section {
+  background: #444;
+}
+
+.dark-mode .entity-footer {
+  background: #444;
+  border-top-color: #555;
+  color: #adb5bd;
+}
+
+.dark-mode .entity-fields::-webkit-scrollbar-track {
+  background: #2d2d2d;
+}
+
+.dark-mode .entity-fields::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+.dark-mode .entity-fields::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .entity-node {
+    width: 280px;
+  }
+  
+  .entity-header {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  .field-item {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .add-field-button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .entity-node {
+    width: 250px;
+  }
+  
+  .entity-header {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  
+  .field-item {
+    padding: 5px 10px;
+    min-height: 32px;
+  }
+  
+  .field-icon {
+    width: 16px;
+    font-size: 10px;
+  }
+  
+  .field-format {
+    font-size: 10px;
+    min-width: 60px;
+  }
+}
+
+/* Animation for new entities */
+@keyframes entityAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.entity-node.new-entity {
+  animation: entityAppear 0.3s ease-out;
+}
+
+/* Selection animation */
+@keyframes selectPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(40, 167, 69, 0);
+  }
+}
+
+.entity-node.selected {
+  animation: selectPulse 2s infinite;
+}
+
+/* Highlight animation */
+@keyframes highlightPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(13, 110, 253, 0);
+  }
+}
+
+.entity-node.highlighted {
+  animation: highlightPulse 2s infinite;
+}
+
+/* Drag animation */
+@keyframes dragFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.entity-node.dragging {
+  animation: dragFloat 0.5s ease-in-out infinite;
+}
+
+/* Smooth dragging transition */
+.entity-node {
+  transition: transform 0.1s ease, box-shadow 0.3s ease;
+}
+
+.entity-node.dragging {
+  transition: transform 0.05s ease, box-shadow 0.3s ease;
+}
+
+/* Estilos para los handles de campos en EntityNode */
+.entity-fields {
+  position: relative;
+}
+
+.entity-node .field-node {
+  margin: 0;
+  padding: 8px 16px;
+}
+
+.entity-node .connection-handle {
+  z-index: 20;
+}
+
+/* Asegurar que los handles sean visibles sobre otros elementos */
+.entity-node {
+  isolation: isolate;
+}
+
+.entity-fields .field-node {
+  position: relative;
+  z-index: 1;
+}
+
+.entity-fields .field-node:hover {
+  z-index: 10;
+}
+
+/* Ajustes para modo oscuro en EntityNode con FieldNode */
+.dark-mode .entity-fields .field-node {
+  border-bottom-color: #444;
+}
+
+.dark-mode .entity-fields .field-node:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Estilos para modo conexión */
+.entity-node.connecting {
+  border-color: #0d6efd !important;
+  box-shadow: 0 0 15px rgba(13, 110, 253, 0.4) !important;
+}
